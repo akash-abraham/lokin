@@ -5,20 +5,34 @@ import { Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useSession } from "next-auth/react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 export default function CountdownClock() {
+  const session=useSession();
+  console.log(session);
   const [selectedTime, setSelectedTime] = useState<string>("")
   const [remainingTime, setRemainingTime] = useState<number>(0)
   const [isRunning, setIsRunning] = useState<boolean>(false)
+  const [amount, setAmount] = useState<number>(0) // Store minutes as coins
 
-  // Function to play the alarm sound
   const playSound = () => {
-    const audio = new Audio('alarm.wav') // Make sure alarm.wav is in the public folder
+    const audio = new Audio('alarm.wav') 
     audio.play()
   }
 
-  // Timer functionality
+  const sendAmountToServer = async (earnedCoins: number) => {
+    try {
+      const response = await fetch(`/api/coinadder?id=1&amount=${earnedCoins}`, {
+        method: "GET"
+      })
+      const data = await response.json()
+      console.log("Amount updated:", data)
+    } catch (error) {
+      console.error("Failed to update amount:", error)
+    }
+  }
+
   useEffect(() => {
     let interval: any
 
@@ -26,19 +40,25 @@ export default function CountdownClock() {
       interval = setInterval(() => {
         setRemainingTime((prevTime) => prevTime - 1)
       }, 1000)
-    } else if (remainingTime === 0) {
+    } else if (remainingTime === 0 && isRunning) {
       setIsRunning(false)
       playSound() // Play sound when countdown reaches 0
+      
+      // Send the amount (coins) to the server based on minutes counted
+      sendAmountToServer(amount)
     }
 
     return () => clearInterval(interval)
-  }, [isRunning, remainingTime])
+  }, [isRunning, remainingTime, amount])
 
   // Handles time selection from the popover input
   const handleTimeSelect = (time: string) => {
     setSelectedTime(time)
+    
     const [hours, minutes] = time.split(":").map(Number)
-    setRemainingTime(hours * 3600 + minutes * 60)
+    const totalMinutes = hours * 60 + minutes
+    setAmount(totalMinutes) // Set coins equivalent to the total minutes
+    setRemainingTime(totalMinutes * 60) // Convert to seconds for countdown
   }
 
   // Starts the countdown
