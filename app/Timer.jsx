@@ -1,15 +1,15 @@
 "use client"
 import { useState, useEffect } from 'react';
-import { Button } from "@/components/ui/button"; // Import ShadCN Button
+import { Button } from "@/components/ui/button"; 
 
 const Timer = () => {
-  const [time, setTime] = useState(0); // User-set time in seconds
-  const [countdown, setCountdown] = useState(null); // Countdown value
-  const [isRunning, setIsRunning] = useState(false); // Timer status
+  const [time, setTime] = useState(0); 
+  const [countdown, setCountdown] = useState(null); 
+  const [isRunning, setIsRunning] = useState(false); 
 
   // Play sound when timer hits zero
   const playSound = () => {
-    const audio = new Audio('/alarm.mp3'); // Ensure alarm.mp3 is in public folder
+    const audio = new Audio('/alarm.wav'); 
     audio.play();
   };
 
