@@ -24,11 +24,11 @@ const WebcamObjectDetection = () => {
     loadModel();
   }, []);
 
-  // Function to run object detection
+  
   const detectObjects = async () => {
     if (
       webcamRef.current &&
-      webcamRef.current.video.readyState === 4 && // Check if the video is ready
+      webcamRef.current.video.readyState === 4 &&
       model
     ) {
       const video = webcamRef.current.video;
@@ -41,9 +41,9 @@ const WebcamObjectDetection = () => {
       );
 
       if (phoneDetected) {
-        setPhoneWarning(true); // Set warning state if phone is detected
+        setPhoneWarning(true); 
       } else {
-        setPhoneWarning(false); // Reset warning if no phone is detected
+        setPhoneWarning(false); 
       }
     }
   };
@@ -58,7 +58,7 @@ const WebcamObjectDetection = () => {
 
   return (
     <div>
-      <h1>Object Detection with COCO-SSD</h1>
+      
       <Webcam
         ref={webcamRef}
         audio={false}
