@@ -7,7 +7,7 @@ export const Next_AUTH_CONFIG = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Email", type: "text", placeholder: "email@example.com" },
+        email: { label: "Email", type: "text", placeholder: "email@example.com" },
         password: { label: "Password", type: "password", placeholder: "Your password" },
       },
       async authorize(credentials) {
@@ -32,6 +32,11 @@ export const Next_AUTH_CONFIG = {
                 return null;
         }
          // No user found
+         return{
+            id:user.id,
+            name:user.name,
+            email:user.email,
+        };
       },
     }),
   ],
@@ -44,7 +49,6 @@ export const Next_AUTH_CONFIG = {
       if (user) {
         token.id = user.id; // Assuming user has an id field
         token.email = user.email;
-        token.bowner = user.bowner || false; // Attach bowner status to token if available
       }
       return token;
     },
@@ -52,7 +56,6 @@ export const Next_AUTH_CONFIG = {
       session.user = {
         id: token.id,
         email: token.email,
-        bowner: token.bowner || false, 
       };
       return session;
     },
