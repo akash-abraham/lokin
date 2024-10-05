@@ -8,7 +8,7 @@ const WebcamObjectDetection = () => {
   const webcamRef = useRef(null);
   const [model, setModel] = useState(null);
   const [detections, setDetections] = useState([]);
-  const [phoneWarning, setPhoneWarning] = useState(false); // State for phone warning
+  const [phoneWarning, setPhoneWarning] = useState(false); 
 
   const playSound = () => {
     const audio = new Audio('/warn.wav'); 
@@ -48,7 +48,7 @@ const WebcamObjectDetection = () => {
     }
   };
 
-  // Use useEffect to repeatedly run detection at intervals
+  
   useEffect(() => {
     const interval = setInterval(() => {
       detectObjects();
@@ -66,7 +66,7 @@ const WebcamObjectDetection = () => {
           width: '340px',
           height: '280px',
           borderRadius: '30px',
-          border: phoneWarning ? '4px solid red' : '4px solid green', // Conditional border
+          border: phoneWarning ? '4px solid red' : '4px solid green', 
         }}
       />
       <div>
