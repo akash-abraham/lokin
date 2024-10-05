@@ -44,6 +44,13 @@ export const Next_AUTH_CONFIG = {
   secret: process.env.NEXTAUTH_SECRET,
 
   callbacks: {
+    session: async ({ session, token }) => {
+      if(session?.user){
+      session.user.id =  token.id;
+      session.user.email = token.email;
+      }
+      return session;
+    },
     jwt: async ({ token, user }) => {
       // If the user object is present, attach relevant information to the token
       if (user) {
@@ -52,12 +59,7 @@ export const Next_AUTH_CONFIG = {
       }
       return token;
     },
-    session: async ({ session, token }) => {
-      session.user = {
-        id: token.id,
-        email: token.email,
-      };
-      return session;
-    },
+
+  
   },
 };
