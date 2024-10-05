@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import {  signOut,useSession } from "next-auth/react"
 import { useRouter } from "next/navigation";
+import { VscLock } from "react-icons/vsc";
+
 
 
 
@@ -25,13 +27,14 @@ export function Nav() {
     const router = useRouter();
 
   return (
-    <div className="fixed top-10 inset-x-0  max-w-screen-xl mx-auto z-50 ">
-      <div className="flex justify-between items-center"></div>
+    <>
+    <div className="fixed top-10 flex inset-x-0 gap-4  max-w-screen-xl mx-auto z-50 ">
+      <div className=" felx justify-between items-center"></div>
     <NavigationMenu className="">
       <NavigationMenuList>
         <NavigationMenuItem className="font-bold text-2xl">
             <Link href='/'>
-          Lokin
+        <span className="flex flex-row">Lokin <VscLock /></span>  
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem className='cursor-pointer' onClick={()=>router.push('/signUp')}>
@@ -52,8 +55,11 @@ export function Nav() {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-    </div>
 
+    </div>
+ 
+ 
+    </>
   )
 }
 
