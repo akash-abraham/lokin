@@ -5,6 +5,7 @@ import { Terminal } from "lucide-react"
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import {  useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -16,7 +17,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
-import axios from "axios"
+import axios from "axios";
 import {
   IconBrandGithub,
   IconBrandGoogle,
@@ -44,21 +45,21 @@ export default function SignupFormDemo() {
   return (
     <div className="max-w-md  mt-52 align-middle w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
-        Welcome to Blue Bus
+        Sign Up here
       </h2>
       <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-        Login to Blue Bus if you want to make your bus booking simpler
+    Pro-tip: loggin in can make you 420% more productive(trust me)
       </p>
 
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="Tyler" type="text" onChange={(e)=>{setname(e.target.value)}}/>
+            <Input id="firstname" placeholder="Thamarakshan" type="text" onChange={(e)=>{setname(e.target.value)}}/>
           </LabelInputContainer>
           <LabelInputContainer>
             <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Durden" type="text" onChange={(e)=>{setlname(e.target.value)}}/>
+            <Input id="lastname" placeholder="Pillai" type="text" onChange={(e)=>{setlname(e.target.value)}}/>
           </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
@@ -103,6 +104,18 @@ export default function SignupFormDemo() {
           </button>
         </div> */}
       </form>
+      <div className="mt-3 flex flex-col">
+    <p>
+          Already have an account? signIn
+          <br />
+          {/* <Link onClick={router.push(()=>signIn())} prefetch={true} className="text-teal-400 ">SignIn</Link> here */}
+          <a className="text-teal-400 cursor-pointer" onClick={(e)=>{
+            e.preventDefault();
+            signIn();
+          }}>here</a>
+          
+        </p>
+    </div>
     </div>
   );
 }
