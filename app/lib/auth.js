@@ -1,5 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
+import { cookies } from 'next/headers'
+
 const prisma = new PrismaClient();
 
 export const Next_AUTH_CONFIG = {
@@ -27,7 +29,7 @@ export const Next_AUTH_CONFIG = {
         });
 
 
-    
+        
         if(!user){
                 return null;
         }

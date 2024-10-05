@@ -7,7 +7,7 @@ export async function GET(req){
     const amount = searchParams.get('amount');
     try{
         const res=await client.user.update({
-            where:{id:parseInt(id)},
+            where:{email:id},
             data:{
                 points:{
                     increment:parseInt(amount)

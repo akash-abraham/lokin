@@ -7,23 +7,26 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useSession } from "next-auth/react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import Count from'@/components/cnmbr/Count'
 
 export default function CountdownClock() {
-  const session=useSession();
-  console.log(session);
+  const { data: session } = useSession();
+  console.log(session?.user?.email);
   const [selectedTime, setSelectedTime] = useState<string>("")
   const [remainingTime, setRemainingTime] = useState<number>(0)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [amount, setAmount] = useState<number>(0) // Store minutes as coins
+  
 
   const playSound = () => {
     const audio = new Audio('alarm.wav') 
     audio.play()
   }
 
+  
   const sendAmountToServer = async (earnedCoins: number) => {
     try {
-      const response = await fetch(`/api/coinadder?id=1&amount=${earnedCoins}`, {
+      const response = await fetch(`/api/coinadder?id=${session?.user?.email}&amount=${earnedCoins}`, {
         method: "GET"
       })
       const data = await response.json()
