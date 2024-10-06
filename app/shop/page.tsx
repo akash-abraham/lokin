@@ -7,11 +7,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 // Dummy Pomodoro-related data
 const coupons = [
-  { id: 1, name: "25 Minute Focus Session", description: "Focus for 25 minutes on a task", price: 50 },
-  { id: 2, name: "5 Minute Break", description: "Take a 5-minute break to recharge", price: 25 },
-  { id: 3, name: "Long Break", description: "Enjoy a 15-minute long break", price: 75 },
-  { id: 4, name: "Weekly Planner", description: "Plan your week for better productivity", price: 100 },
-  { id: 5, name: "Productivity Tracker", description: "Track your productivity over time", price: 150 },
+  { id: 1, name: "Spotify premium", description: "Listen to your favourite song without hassle", price: 50 },
+  { id: 2, name: "Linkedin premium", description: "Take your professional journey to next level", price: 25 },
+  { id: 3, name: "Zomato premium", description: "Enjoy a tasty treat", price: 75 },
+  { id: 4, name: "Audible", description: "Listen to your favourite audio books", price: 100 },
+  { id: 5, name: "1 month gym membership", description: "Physical health for good mental health", price: 150 },
 ];
 
 type ToastType = {

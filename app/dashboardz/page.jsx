@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { User, Mail, Coins } from 'lucide-react'
 import { useSession } from 'next-auth/react'
-
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 // Fetch coin data from an API
 const getCoin = async (email) => {
   if (!email) return 0;
@@ -102,7 +103,7 @@ export default function Dashboard() {
           </motion.div>
         </div>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center flex gap-7">
           <button
             onClick={async () => {
               const newCoins = await getCoin(session?.user?.email);
@@ -112,6 +113,11 @@ export default function Dashboard() {
           >
             Refresh Data
           </button>
+
+        <Link href={'/shop'}>
+          <button  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >Shop</button>
+          </Link>
         </div>
       </div>
     </div>
