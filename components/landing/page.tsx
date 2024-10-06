@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 const Landing = () => {
   return (
@@ -13,9 +14,11 @@ const Landing = () => {
         <p className="mt-4 text-lg text-muted-foreground">
             don't slack off
         </p>
+        <Link href={'/pomo'}>
         <button className="mt-8 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
           Get Started
         </button>
+        </Link>
       </div>
     </div>
   )

@@ -57,9 +57,9 @@ export default function Quotes() {
     <div
       style={{
         width: isMobile ? "78vw" : "20vw",
-        backgroundColor: "#606c38",
+        backgroundColor: "#e3d5ca",
         height: "50vh",
-        color: "white",
+        color: "black",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
