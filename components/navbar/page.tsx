@@ -59,12 +59,20 @@ export function Nav() {
           <NavigationMenuItem>
             {
               session?.user? (
+                <>
                 <button
                 onClick={() => signOut()}
                 className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
               >
                 Logout
               </button>
+              <Link href={'/shop'} prefetch={true}>
+              <button
+                className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}>
+                  Shop
+              </button>
+              </Link>
+              </>
               )
               :
               (
@@ -91,7 +99,7 @@ export function Nav() {
 <NavigationMenu>
    <NavigationMenuList>
      <NavigationMenuItem className="font-bold text-2xl">
-       <Link href="/dashboardz" className="flex flex-row items-center">
+       <Link href="/dashboardz" prefetch={true} className="flex flex-row items-center">
          Dashboard 
        </Link>
      </NavigationMenuItem>
