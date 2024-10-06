@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation"
 import { VscLock } from "react-icons/vsc"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import { RiHandCoinFill } from "react-icons/ri";
 
 export function Nav() {
   const { data: session } = useSession()
@@ -56,20 +57,30 @@ export function Nav() {
       <NavigationMenu>
         <NavigationMenuList className="flex items-center gap-4">
           <NavigationMenuItem>
-            <button
+            {
+              session?.user? (
+                <button
+                onClick={() => signOut()}
+                className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
+              >
+                Logout
+              </button>
+              )
+              :
+              (
+                <button
               onClick={() => router.push("/signUp")}
               className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
             >
               SignUp
             </button>
+              )
+
+            }
+            
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <button
-              onClick={() => signOut()}
-              className={cn(navigationMenuTriggerStyle(), "cursor-pointer")}
-            >
-              Logout
-            </button>
+           
           </NavigationMenuItem>
           {email && (
             <NavigationMenuItem>
@@ -87,8 +98,8 @@ export function Nav() {
    </NavigationMenuList>
  </NavigationMenu>
           {points !== undefined && (
-            <NavigationMenuItem>
-              <p className="text-sm font-medium">Points: {points}</p>
+            <NavigationMenuItem className="">
+              <p className="text-lg font-medium flex flex-row items-center"><RiHandCoinFill /> <span className="font-bold ">{points}</span></p>
             </NavigationMenuItem>
           )}
         </NavigationMenuList>
