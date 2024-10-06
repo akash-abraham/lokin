@@ -29,7 +29,7 @@ export function Nav() {
     const fetchCoins = async () => {
       if (id) {
         try {
-          const response = await axios.get('/api/coingetter', { params: { id } })
+          const response = await axios.get(`/api/coingetter?id=${email}`)
           setPoints(response.data.points)
         } catch (error) {
           console.error("Error fetching data:", error)
@@ -76,6 +76,16 @@ export function Nav() {
               <p className="text-sm text-muted-foreground">{email}</p>
             </NavigationMenuItem>
           )}
+
+<NavigationMenu>
+   <NavigationMenuList>
+     <NavigationMenuItem className="font-bold text-2xl">
+       <Link href="/dashboardz" className="flex flex-row items-center">
+         Dashboard 
+       </Link>
+     </NavigationMenuItem>
+   </NavigationMenuList>
+ </NavigationMenu>
           {points !== undefined && (
             <NavigationMenuItem>
               <p className="text-sm font-medium">Points: {points}</p>

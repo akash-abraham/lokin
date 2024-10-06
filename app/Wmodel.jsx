@@ -69,13 +69,13 @@ const WebcamObjectDetection = () => {
           border: phoneWarning ? '4px solid red' : '4px solid green', 
         }}
       />
-      <div>
-        {detections.map((detection, index) => (
-          <div key={index}>
-            {detection.class} - {Math.round(detection.score * 100)}%
-          </div>
-        ))}
-      </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
       {/* Display warning if a phone is detected */}
       {phoneWarning && (
