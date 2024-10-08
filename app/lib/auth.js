@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@prisma/client";
-import { cookies } from 'next/headers'
+// import { cookies } from 'next/headers'
 
 const prisma = new PrismaClient();
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import Button from '@/components/ui/Button'; // Adjust this based on your actual file name
+import {Button} from '@/components/ui/button'; // Adjust this based on your actual file name
 
 const Home = () => {
   const [time, setTime] = useState(0);
-  const [countdown, setCountdown] = useState(null);
+  const [countdown, setCountdown] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   const playSound = () => {
@@ -12,7 +12,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    let interval = null;
+    let interval : NodeJS.Timeout | undefined;
     if (isRunning && countdown > 0) {
       interval = setInterval(() => {
         setCountdown((prevCountdown) => prevCountdown - 1);

@@ -20,7 +20,7 @@ export default function UserDashboard() {
               <AvatarImage src={user.avatarUrl} alt={user.username} />
               <AvatarFallback>{user.username.slice(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
-            <CardTitle className="text-2xl font-bold">{user.username}'s Profile</CardTitle>
+            <CardTitle className="text-2xl font-bold">{user.username}&apos s Profile</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid gap-4">

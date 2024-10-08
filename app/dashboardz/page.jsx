@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { User, Mail, Coins } from 'lucide-react'
 import { useSession } from 'next-auth/react'
-import { Button } from '@/components/ui/button'
+// import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 // Fetch coin data from an API
 const getCoin = async (email) => {

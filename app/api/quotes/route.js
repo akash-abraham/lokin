@@ -10,6 +10,6 @@ export async function GET() {
     const finalresponse = await response.json()
     return NextResponse.json({ finalresponse })
   } catch (error) {
-    return NextResponse.json({ error: "An error occurred" }, { status: 500 })
+    return NextResponse.json({ error: "An error occurred",error }, { status: 500 })
   }
 }

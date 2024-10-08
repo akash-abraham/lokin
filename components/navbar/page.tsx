@@ -5,11 +5,11 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
-  NavigationMenuContent,
+  // NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
+  // NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { signOut, useSession } from "next-auth/react"
@@ -22,6 +22,7 @@ import { RiHandCoinFill } from "react-icons/ri";
 export function Nav() {
   const { data: session } = useSession()
   const email = session?.user?.email
+  //@ts-expect-error-iderror
   const id = session?.user?.id as string | undefined
   const router = useRouter()
   const [points, setPoints] = useState<number | undefined>()
@@ -38,7 +39,7 @@ export function Nav() {
       }
     }
     fetchCoins()
-  }, [id])
+  }, [id,email])
 
   return (
     <div className="fixed top-0 inset-x-0 flex justify-between items-center max-w-screen-xl mx-auto z-50 p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

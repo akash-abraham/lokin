@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect,useCallback } from 'react';
 import Webcam from 'react-webcam';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
 import '@tensorflow/tfjs';
@@ -7,7 +7,7 @@ import '@tensorflow/tfjs';
 const WebcamObjectDetection = () => {
   const webcamRef = useRef(null);
   const [model, setModel] = useState(null);
-  const [detections, setDetections] = useState([]);
+  const [, setDetections] = useState([]);
   const [phoneWarning, setPhoneWarning] = useState(false); 
 
   const playSound = () => {
@@ -25,7 +25,29 @@ const WebcamObjectDetection = () => {
   }, []);
 
   
-  const detectObjects = async () => {
+  // const detectObjects = async () => {
+  //   if (
+  //     webcamRef.current &&
+  //     webcamRef.current.video.readyState === 4 &&
+  //     model
+  //   ) {
+  //     const video = webcamRef.current.video;
+  //     const predictions = await model.detect(video);
+  //     setDetections(predictions);
+
+  //     // Check if "cell phone" is detected
+  //     const phoneDetected = predictions.some(
+  //       (prediction) => prediction.class === 'cell phone'
+  //     );
+
+  //     if (phoneDetected) {
+  //       setPhoneWarning(true); 
+  //     } else {
+  //       setPhoneWarning(false); 
+  //     }
+  //   }
+  // };
+  const detectObjects = useCallback(async () => {
     if (
       webcamRef.current &&
       webcamRef.current.video.readyState === 4 &&
@@ -34,19 +56,23 @@ const WebcamObjectDetection = () => {
       const video = webcamRef.current.video;
       const predictions = await model.detect(video);
       setDetections(predictions);
-
+  
       // Check if "cell phone" is detected
       const phoneDetected = predictions.some(
         (prediction) => prediction.class === 'cell phone'
       );
-
+  
       if (phoneDetected) {
         setPhoneWarning(true); 
       } else {
         setPhoneWarning(false); 
       }
     }
-  };
+  }, [webcamRef, model]);
+  
+  useEffect(() => {
+    detectObjects(); // Call the memoized function
+  }, [detectObjects]);
 
   
   useEffect(() => {
@@ -54,7 +80,7 @@ const WebcamObjectDetection = () => {
       detectObjects();
     }, 1000); // Detect objects every second
     return () => clearInterval(interval);
-  }, [model]);
+  }, [model,detectObjects]);
 
   return (
     <div>

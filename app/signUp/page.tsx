@@ -1,34 +1,34 @@
 "use client";
 import React, { useState } from "react";
 import { Label } from "@/components/ui/label";
-import { Terminal } from "lucide-react"
+// import { Terminal } from "lucide-react"
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import {  useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-  } from "@/components/ui/alert-dialog"
+// import {
+//     AlertDialog,
+//     AlertDialogAction,
+//     AlertDialogCancel,
+//     AlertDialogContent,
+//     AlertDialogDescription,
+//     AlertDialogFooter,
+//     AlertDialogHeader,
+//     AlertDialogTitle,
+//     AlertDialogTrigger,
+//   } from "@/components/ui/alert-dialog"
 import axios from "axios";
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
+// import {
+//   IconBrandGithub,
+//   IconBrandGoogle,
+//   IconBrandOnlyfans,
+// } from "@tabler/icons-react";
 
 export default function SignupFormDemo() {
     const [name,setname]=useState("");
     const [lname,setlname]=useState("");
     const[email,setemail]=useState("");
-    const [phno,setphno]=useState("");
+    const [phno,]=useState("");
     const [password,setpassword]=useState("");
     const router= useRouter();
   const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
@@ -39,7 +39,7 @@ export default function SignupFormDemo() {
     }
     console.log("Form submitted");
     console.log(name,lname,email,phno);
-    const response=await axios.post("/api/auth/signUp",{name:name+""+lname,email:email,password:password});
+    await axios.post("/api/auth/signUp",{name:name+""+lname,email:email,password:password});
     router.push('/')
   };
   return (
