@@ -88,7 +88,7 @@ export default function CountdownClock() {
   })();
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-4 mt-10">
       <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline">
