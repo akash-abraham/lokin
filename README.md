@@ -27,8 +27,8 @@ Lokin is an innovative productivity website designed to help users stay focused 
 ## 🛠 Tech Stack
 
 - **Frontend**: Next.js, TypeScript, Tailwind CSS
-- **Backend**: Node.js
-- **Computer Vision**: Python with OpenCV and related libraries
+- **Backend**: Node.js, Prisma
+- **Computer Vision**: Tensorflow.js
 - **Database**: PostgreSQL
 - **Hosting**: Vercel
 
@@ -48,7 +48,7 @@ Lokin is an innovative productivity website designed to help users stay focused 
 
 ### Prerequisites
 - Node.js and npm installed on your system
-- Python (for computer vision components)
+
 
 ### Steps
 1. Clone the repository:
