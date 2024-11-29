@@ -18,7 +18,14 @@ Lokin is an innovative productivity website designed to help users stay focused 
 ### Landing Page
 <br/>
 <p align="center">
-   <img src="./landingpage.png" alt="Landing Page" width="800">
+   <img src="./assets/landingpage.png" alt="Landing Page" width="800">
+</p>
+
+
+### Lokin Page 
+<br/>
+<p align="center">
+   <img src="./assets/timer.png" alt="Lokin Page" width="800">
 </p>
 
 
